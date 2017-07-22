@@ -8,6 +8,7 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var babel = require('gulp-babel');
 var del = require('del');
+var zip = require('gulp-zip');
 
 //handlebars plugins
 var handlebars = require('gulp-handlebars');
@@ -118,4 +119,10 @@ gulp.task('clean', function () {
 
 gulp.task('default', ['clean', 'images', 'templates', 'styles', 'scripts'], function () {
     console.log('default task');
+});
+
+gulp.task('export', function () {
+    return gulp.src('public/**/*')
+        .pipe(zip('website.zip'))
+        .pipe(gulp.dest('./'));
 });
