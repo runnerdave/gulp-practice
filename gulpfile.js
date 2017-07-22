@@ -1,4 +1,3 @@
-'use strict';
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
@@ -15,11 +14,20 @@ var handlebarsLib = require('handlebars');
 var declare = require('gulp-declare');
 var wrap = require('gulp-wrap');
 
+//image compression
+var imagemin = require('gulp-imagemin');
+var imageminOptipng = require('imagemin-optipng');
+var imageminSvgo = require('imagemin-svgo');
+var imageminPngquant = require('imagemin-pngquant');
+var imageminJpegRecompress = require('imagemin-jpeg-recompress');
+var imageminJpegtran = require('imagemin-jpegtran');
+
 //file paths
 var SCRIPTS_PATH = 'public/scripts/**/*.js';
 var CSS_PATH = 'public/css/**/*.css';
 var DIST_PATH = 'public/dist';
 var TEMPLATES_PATH = 'templates/**/*.hbs';
+var IMAGES_PATH = 'public/images/**/*.{png,jpeg,jpg,svg,gif}';
 
 //Styles
 gulp.task('styles', function () {
@@ -63,7 +71,17 @@ gulp.task('scripts', function () {
 
 // Images
 gulp.task('images', function () {
-    console.log('starting images task');
+    return gulp.src(IMAGES_PATH)
+        .pipe(imagemin(
+            [
+                imageminOptipng(),
+                imageminSvgo(),
+                imageminPngquant(),
+                imageminJpegRecompress(),
+                imageminJpegtran()
+            ]
+        ))
+        .pipe(gulp.dest(DIST_PATH + '/images'));
 });
 
 // handlebars
