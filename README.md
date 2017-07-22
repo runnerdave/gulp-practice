@@ -4,11 +4,11 @@ Demonstrate basic tasks with Gulp:
  * minification
  * livereload
  * autoprefixing
- * uglifycation
+ * uglyfication
  * concatenation
  * sourcemaps for debugging of source files
  
-Branches
+## Branches
 
 the repo is organized in branches to play with the different ways of accomplish the previous tasks:
 
