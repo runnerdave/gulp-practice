@@ -10,7 +10,8 @@ Demonstrate basic tasks with Gulp:
  
 Branches
 
-the repo is organized in branches to play with the different ways of accomplish the previous tasks
-    * branch master: uses plain css
-    * branch sass: uses sass
-    * branch less: uses less
+the repo is organized in branches to play with the different ways of accomplish the previous tasks:
+
+ * branch _master_: uses plain css
+ * branch _sass_: uses sass
+ * branch _less_: uses less
