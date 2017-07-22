@@ -1,4 +1,4 @@
-#Shows the usage of Gulp
+# Shows the usage of Gulp
 
 Demonstrate basic tasks with Gulp:
  * minification
