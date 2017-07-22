@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
@@ -19,7 +19,7 @@ gulp.task('styles', function () {
     return gulp.src(['public/css/reset.css', CSS_PATH])
         .pipe(plumber(function(err) {
             console.log('Styles task error!');
-            console.log(err)
+            console.log(err);
             this.emit('end');
         }))
         .pipe(sourcemaps.init())
@@ -36,8 +36,16 @@ gulp.task('scripts', function () {
     console.log('starting scripts task');
 
     return gulp.src(SCRIPTS_PATH)
-    	.pipe(uglify())
-    	.pipe(gulp.dest(DIST_PATH))
+        .pipe(plumber(function(err) {
+            console.log('Styles task error!');
+            console.log(err);
+            this.emit('end');
+        }))
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(concat('scripts.js'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(DIST_PATH))
     	.pipe(livereload());
 });
 
