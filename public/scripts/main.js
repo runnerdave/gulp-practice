@@ -12,5 +12,8 @@ class Person {
 }
 
 var person = new Person('David Alberto Jimenez Noguera');
+var greetHTML = templates['greeting']({
+   message: person.hello()
+});
 
-document.write(person.hello() + ', una pelusa!');
+document.write(greetHTML);
