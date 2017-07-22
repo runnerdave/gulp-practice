@@ -7,6 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
+var babel = require('gulp-babel');
 
 var SCRIPTS_PATH = 'public/scripts/**/*.js';
 var CSS_PATH = 'public/css/**/*.css';
@@ -42,6 +43,9 @@ gulp.task('scripts', function () {
             this.emit('end');
         }))
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(uglify())
         .pipe(concat('scripts.js'))
         .pipe(sourcemaps.write())
