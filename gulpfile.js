@@ -81,10 +81,10 @@ gulp.task('templates', function () {
         .pipe(concat('templates.js'))
         .pipe(gulp.dest(DIST_PATH))
         .pipe(livereload());
-})
+});
 
 // Watch
-gulp.task('watch', function () {
+gulp.task('watch', ['default'], function () {
     console.log('starting watch task');
     require('./server.js');
     livereload.listen();
@@ -93,6 +93,6 @@ gulp.task('watch', function () {
     gulp.watch(TEMPLATES_PATH, ['templates']);
 });
 
-gulp.task('default', function () {
+gulp.task('default', ['images', 'templates', 'styles', 'scripts'], function () {
     console.log('default task');
 });
